@@ -1,0 +1,41 @@
+[workspace]
+members = [
+    "crates/core",
+    "crates/data",
+    "crates/optimizer",
+    "crates/utils",
+]
+resolver = "2"
+
+[workspace.dependencies]
+nalgebra = "0.32.3"
+statrs = "0.17.0"
+plotters = "0.3.5"
+log = "0.4.20"
+env_logger = "0.10.0"
+anyhow = "1.0.75"
+polars = { version = "0.34.2", features = ["lazy", "csv"] }
+rand = "0.8.5"
+
+# Local Crates
+rpo-core = { path = "crates/core" }
+rpo-data = { path = "crates/data" }
+rpo-optimizer = { path = "crates/optimizer" }
+rpo-utils = { path = "crates/utils" }
+
+# Root package for running examples
+[package]
+name = "rust-portfolio-optimizer"
+version = "0.1.0"
+edition = "2021"
+authors = ["Gabriel Demetrios Lafis"]
+
+[dependencies]
+anyhow = { workspace = true }
+rpo-core = { workspace = true }
+rpo-data = { workspace = true }
+rpo-optimizer = { workspace = true }
+rpo-utils = { workspace = true }
+polars = { workspace = true }
+plotters = { workspace = true }
+
