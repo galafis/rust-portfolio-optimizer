@@ -1,5 +1,10 @@
 # rust-portfolio-optimizer
 
+![Rust](https://img.shields.io/badge/rust-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)
+![Nalgebra](https://img.shields.io/badge/nalgebra-math-red.svg?style=for-the-badge)
+![Plotters](https://img.shields.io/badge/plotters-viz-purple.svg?style=for-the-badge)
+
 **A high-performance portfolio optimization tool using Modern Portfolio Theory (MPT) in Rust.**
 
 ---
