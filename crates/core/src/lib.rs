@@ -2,7 +2,6 @@ use nalgebra::{DMatrix, DVector};
 use rpo_data::load_historical_data;
 use rpo_optimizer::{calculate_returns, optimize_portfolio};
 use anyhow::Result;
-use polars::prelude::*;
 
 pub fn run_optimization(path: &str) -> Result<(DVector<f64>, Vec<(f64, f64)>)> {
     let df = load_historical_data(path)?;
