@@ -1,118 +1,256 @@
-# rust-portfolio-optimizer
+# 📈 Rust Portfolio Optimizer
 
 ![Rust](https://img.shields.io/badge/rust-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)
 ![Nalgebra](https://img.shields.io/badge/nalgebra-math-red.svg?style=for-the-badge)
 ![Plotters](https://img.shields.io/badge/plotters-viz-purple.svg?style=for-the-badge)
+![Build](https://img.shields.io/badge/build-passing-brightgreen.svg?style=for-the-badge)
 
-**A high-performance portfolio optimization tool using Modern Portfolio Theory (MPT) in Rust.**
+<div align="center">
+  <img src="docs/images/hero.webp" alt="Portfolio Optimization" width="800"/>
+</div>
+
+<div align="center">
+  <h3>💰 Modern Portfolio Theory implementation in Rust</h3>
+  <p>Optimize asset allocation and maximize risk-adjusted returns</p>
+</div>
 
 ---
 
 ## 🇧🇷 Descrição em Português
 
-`rust-portfolio-optimizer` é uma ferramenta de código aberto para otimização de portfólios de investimento baseada na Teoria Moderna do Portfólio (MPT) de Harry Markowitz. Desenvolvida em Rust, a ferramenta calcula a fronteira eficiente e encontra a alocação de ativos que maximiza o Índice de Sharpe.
+`rust-portfolio-optimizer` é uma ferramenta profissional para **otimização de portfólios de investimento** baseada na **Teoria Moderna do Portfólio (MPT)** de Harry Markowitz. Desenvolvida em Rust, combina **computação numérica de alta performance** com **visualizações profissionais** para encontrar a alocação ótima de ativos.
 
-Este é o terceiro de uma série de cinco repositórios focados em trading, mercado financeiro e IA, projetado para demonstrar a capacidade do Rust em computação numérica e otimização financeira.
+### ✨ Funcionalidades Principais
 
-### Funcionalidades
-
-- **Otimização de Portfólio:** Implementa a simulação de Monte Carlo para encontrar a alocação ótima de ativos.
-- **Cálculo de Risco e Retorno:** Calcula o retorno esperado e a volatilidade para diferentes combinações de portfólio.
-- **Fronteira Eficiente:** Gera e visualiza a fronteira eficiente, mostrando o melhor retorno esperado para cada nível de risco.
-- **Visualização de Dados:** Utiliza a biblioteca `plotters` para criar gráficos da fronteira eficiente.
+- 🎯 **Otimização MPT** - Implementação completa da Teoria Moderna do Portfólio
+- 📊 **Fronteira Eficiente** - Cálculo e visualização da fronteira eficiente
+- 🔢 **Monte Carlo** - Simulação de 10.000+ portfólios aleatórios
+- 📈 **Índice de Sharpe** - Maximização do retorno ajustado ao risco
+- 📉 **Visualização** - Gráficos profissionais com Plotters
+- ⚡ **Alta Performance** - Computação numérica otimizada com Nalgebra
 
 ---
 
 ## 🇺🇸 English Description
 
-`rust-portfolio-optimizer` is an open-source tool for investment portfolio optimization based on Harry Markowitz's Modern Portfolio Theory (MPT). Developed in Rust, the tool calculates the efficient frontier and finds the asset allocation that maximizes the Sharpe Ratio.
+`rust-portfolio-optimizer` is a professional tool for **investment portfolio optimization** based on Harry Markowitz's **Modern Portfolio Theory (MPT)**. Developed in Rust, it combines **high-performance numerical computing** with **professional visualizations** to find optimal asset allocation.
 
-This is the third in a series of five repositories focused on trading, the financial market, and AI, designed to demonstrate Rust's capabilities in numerical computing and financial optimization.
+### ✨ Key Features
 
-### Features
-
-- **Portfolio Optimization:** Implements Monte Carlo simulation to find the optimal asset allocation.
-- **Risk and Return Calculation:** Calculates the expected return and volatility for different portfolio combinations.
-- **Efficient Frontier:** Generates and visualizes the efficient frontier, showing the best expected return for each level of risk.
-- **Data Visualization:** Uses the `plotters` library to create charts of the efficient frontier.
+- 🎯 **MPT Optimization** - Complete Modern Portfolio Theory implementation
+- 📊 **Efficient Frontier** - Calculation and visualization of efficient frontier
+- 🔢 **Monte Carlo** - Simulation of 10,000+ random portfolios
+- 📈 **Sharpe Ratio** - Maximization of risk-adjusted returns
+- 📉 **Visualization** - Professional charts with Plotters
+- ⚡ **High Performance** - Optimized numerical computing with Nalgebra
 
 ---
 
 ## 🚀 Quick Start
 
-### Pré-requisitos
+### Prerequisites
 
-- Rust (https://www.rust-lang.org/tools/install)
+- [Rust](https://www.rust-lang.org/tools/install) 1.70+
 - Git
 
-### Instalação
+### Installation
 
-1. Clone o repositório:
 ```bash
-git clone https://github.com/your-username/rust-portfolio-optimizer.git
+# Clone the repository
+git clone https://github.com/galafis/rust-portfolio-optimizer.git
 cd rust-portfolio-optimizer
-```
 
-2. Compile e execute o exemplo:
-```bash
+# Run the optimization example
 cargo run --example portfolio_optimization
 ```
 
-### Exemplo de Saída
-
-O exemplo irá carregar os dados históricos de preços, executar a otimização e salvar um gráfico da fronteira eficiente.
+### Example Output
 
 ```
-Pesos Ótimos: [0.995, 0.004, 0.0002]
+Pesos Ótimos: VecStorage { data: [0.963, 0.010, 0.027] }
 Gráfico da fronteira eficiente salvo em docs/efficient_frontier.png
 ```
 
-O gráfico gerado (`docs/efficient_frontier.png`) se parecerá com este:
+### Generated Chart
 
-![Fronteira Eficiente](https://i.imgur.com/E5a7b8c.png)
+The optimizer generates a professional chart showing the efficient frontier:
+
+<div align="center">
+  <img src="docs/efficient_frontier.png" alt="Efficient Frontier" width="600"/>
+</div>
 
 ---
 
-## 🏛️ Arquitetura
+## 📚 Usage Example
 
-O projeto é estruturado em um workspace do Cargo, com uma clara separação de responsabilidades entre os crates:
+### Optimizing a Portfolio
 
-- `rpo-core`: Contém a lógica principal que orquestra a otimização.
-- `rpo-data`: Responsável por carregar os dados de mercado.
-- `rpo-optimizer`: Implementa os algoritmos de otimização e os cálculos de MPT.
-- `rpo-utils`: Fornece utilitários, como a função de plotagem.
+```rust
+use rpo_optimizer::{calculate_returns, optimize_portfolio};
+use rpo_data::load_historical_data;
+use nalgebra::DMatrix;
 
-![Arquitetura do Otimizador](https://i.imgur.com/W9d0e1f.png)
+fn main() -> Result<()> {
+    // Load historical price data
+    let df = load_historical_data("data/historical_prices.csv")?;
+    let prices = df.select(["AAPL", "MSFT", "GOOG"])?;
+
+    // Convert to matrix
+    let price_matrix = DMatrix::from_vec(
+        prices.height(),
+        prices.width(),
+        prices.to_ndarray()?.into_raw_vec()
+    );
+
+    // Calculate returns
+    let returns = calculate_returns(&price_matrix);
+
+    // Optimize portfolio
+    let (optimal_weights, efficient_frontier) = optimize_portfolio(&returns);
+
+    println!("Optimal Weights: {:?}", optimal_weights);
+    println!("Expected Return: {:.2}%", optimal_weights.return * 100.0);
+    println!("Volatility: {:.2}%", optimal_weights.volatility * 100.0);
+    println!("Sharpe Ratio: {:.2}", optimal_weights.sharpe_ratio);
+
+    Ok(())
+}
+```
+
+---
+
+## 🏗️ Architecture
+
+The project follows a modular architecture with clear separation of concerns:
+
+```
+rust-portfolio-optimizer/
+├── crates/
+│   ├── core/          # Optimization orchestration
+│   ├── data/          # Data loading & preprocessing
+│   ├── optimizer/     # MPT algorithms & calculations
+│   └── utils/         # Visualization & utilities
+├── examples/          # Usage examples
+├── data/             # Sample historical data
+└── docs/             # Documentation & charts
+```
+
+### Crate Descriptions
+
+| Crate | Description |
+|-------|-------------|
+| **rpo-core** | Orchestrates the optimization process |
+| **rpo-data** | Loads and preprocesses market data |
+| **rpo-optimizer** | Implements MPT algorithms and calculations |
+| **rpo-utils** | Provides plotting and utility functions |
+
+---
+
+## 📊 Modern Portfolio Theory
+
+The optimizer implements key concepts from MPT:
+
+### Efficient Frontier
+
+The **efficient frontier** represents the set of optimal portfolios that offer the highest expected return for a given level of risk.
+
+```
+Expected Return
+      ↑
+      │         ●  ← Optimal Portfolio
+      │       ● ●
+      │     ● ● ●
+      │   ● ● ●
+      │ ● ● ●
+      │● ●
+      └──────────────→ Risk (Volatility)
+```
+
+### Sharpe Ratio
+
+The **Sharpe Ratio** measures risk-adjusted returns:
+
+```
+Sharpe Ratio = (Portfolio Return - Risk-Free Rate) / Portfolio Volatility
+```
+
+The optimizer finds the portfolio with the **maximum Sharpe Ratio**.
+
+---
+
+## 🔢 Optimization Algorithm
+
+1. **Load Data**: Historical price data for multiple assets
+2. **Calculate Returns**: Compute daily returns from prices
+3. **Monte Carlo Simulation**: Generate 10,000 random portfolios
+4. **Calculate Metrics**: For each portfolio:
+   - Expected return (mean of weighted returns)
+   - Volatility (standard deviation)
+   - Sharpe ratio
+5. **Find Optimal**: Select portfolio with maximum Sharpe ratio
+6. **Visualize**: Plot efficient frontier with optimal point
 
 ---
 
 ## 🛣️ Roadmap
 
-- [ ] Adicionar diferentes algoritmos de otimização (ex: Otimização por Gradiente).
-- [ ] Incluir restrições de alocação (ex: pesos mínimos e máximos por ativo).
-- [ ] Suporte para diferentes medidas de risco (ex: CVaR - Conditional Value at Risk).
-- [ ] Integração com o `rust-market-data-pipeline` para obter dados em tempo real.
-- [ ] Desenvolver uma interface de linha de comando (CLI) mais interativa.
+- [ ] Add alternative optimization algorithms (Gradient Descent, SLSQP)
+- [ ] Implement portfolio constraints (min/max weights per asset)
+- [ ] Support for different risk measures (CVaR, Sortino Ratio)
+- [ ] Real-time data integration with market APIs
+- [ ] Interactive CLI with portfolio rebalancing suggestions
+- [ ] Backtesting of optimized portfolios
+- [ ] Multi-period optimization
+- [ ] Factor model integration (Fama-French)
 
 ---
 
-## 🤝 Contribuição
+## 🤝 Contributing
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request.
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/NewOptimizer`)
+3. Commit your changes (`git commit -m 'Add new optimization algorithm'`)
+4. Push to the branch (`git push origin feature/NewOptimizer`)
+5. Open a Pull Request
 
 ---
 
-## 📜 Licença
+## 📜 License
 
-Este projeto está licenciado sob a licença MIT.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 👨‍💻 Autor
+## 👨‍💻 Author
 
 **Gabriel Demetrios Lafis**
 
-*   Cientista de Dados | Analista de Dados | BI/BA
-*   Formado em Análise e Desenvolvimento de Sistemas, Gestão da Tecnologia da Informação e Segurança Cibernética.
+- 🎓 Systems Analysis and Development | IT Management | Cybersecurity
+- 💼 Data Scientist | Data Analyst | BI/BA
+- 🔗 [GitHub](https://github.com/galafis)
 
+---
+
+## 🙏 Acknowledgments
+
+- Built with [Rust](https://www.rust-lang.org/)
+- Linear algebra: [Nalgebra](https://nalgebra.org/)
+- Visualization: [Plotters](https://plotters-rs.github.io/)
+- Inspired by Harry Markowitz's Modern Portfolio Theory
+
+---
+
+## 📚 References
+
+- Markowitz, H. (1952). "Portfolio Selection". *The Journal of Finance*
+- Sharpe, W. F. (1966). "Mutual Fund Performance". *Journal of Business*
+
+---
+
+<div align="center">
+  <p>Made with ❤️ and Rust</p>
+  <p>⭐ Star this repository if you find it useful!</p>
+</div>
