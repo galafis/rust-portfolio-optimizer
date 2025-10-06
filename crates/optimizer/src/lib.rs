@@ -1,5 +1,5 @@
 use nalgebra::{DMatrix, DVector};
-use statrs::statistics::Statistics;
+use rand::Rng;
 
 pub fn calculate_returns(prices: &DMatrix<f64>) -> DMatrix<f64> {
     let mut returns = DMatrix::from_element(prices.nrows() - 1, prices.ncols(), 0.0);

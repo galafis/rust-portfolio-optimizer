@@ -1,0 +1,26 @@
+graph TB
+    Start[Load Historical Prices]
+    Returns[Calculate Returns]
+    Stats[Calculate Statistics]
+    MonteCarlo[Monte Carlo Simulation<br/>10,000 portfolios]
+    Calc[Calculate for each:<br/>• Expected Return<br/>• Volatility<br/>• Sharpe Ratio]
+    Find[Find Maximum<br/>Sharpe Ratio]
+    Plot[Plot Efficient<br/>Frontier]
+    Output[Optimal Weights]
+    
+    Start --> Returns
+    Returns --> Stats
+    Stats --> MonteCarlo
+    MonteCarlo --> Calc
+    Calc --> Find
+    Find --> Plot
+    Find --> Output
+    
+    style Start fill:#e1f5ff
+    style Returns fill:#e1f5ff
+    style Stats fill:#e1f5ff
+    style MonteCarlo fill:#fff4e1
+    style Calc fill:#fff4e1
+    style Find fill:#fff4e1
+    style Plot fill:#e8f5e9
+    style Output fill:#e8f5e9

@@ -124,6 +124,12 @@ fn main() -> Result<()> {
 
 The project follows a modular architecture with clear separation of concerns:
 
+<div align="center">
+  <img src="docs/optimization_flow.png" alt="Optimization Flow" width="500"/>
+</div>
+
+### Project Structure
+
 ```
 rust-portfolio-optimizer/
 ├── crates/
