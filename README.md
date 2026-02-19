@@ -128,6 +128,20 @@ The project follows a modular architecture with clear separation of concerns:
   <img src="docs/optimization_flow.png" alt="Optimization Flow" width="500"/>
 </div>
 
+```mermaid
+flowchart LR
+    A[Asset Universe\nStocks / ETFs / Bonds] --> B[Returns & Risk\nMean / Covariance Matrix]
+    B --> C[Optimization\nMarkowitz MPT\nMonte Carlo 10K]
+    C --> D[Efficient Frontier\nRisk-Return Curve]
+    D --> E[Optimal Portfolio\nMax Sharpe Ratio]
+
+    style A fill:#1a1a2e,stroke:#e94560,color:#fff
+    style B fill:#16213e,stroke:#0f3460,color:#fff
+    style C fill:#0f3460,stroke:#533483,color:#fff
+    style D fill:#533483,stroke:#e94560,color:#fff
+    style E fill:#1a1a2e,stroke:#e94560,color:#fff
+```
+
 ### Project Structure
 
 ```
